@@ -1,0 +1,6 @@
+langroid
+langroid[hf-embeddings]
+python-dotenv
+crewai
+duckduckgo-search
+wolframalpha

@@ -11,21 +11,21 @@ player1 = Agent(
     role="Martin",
     goal="You will guess the name of a personality",
     backstory="""Your name is Martin. You are playing the 20 question game with your friend Ravi and Shamik. In this game 
-           you will think of a famous personality.Only Shamik can know the name of the personality, Ravi needs to guess the name.
-           DO NOT share the name with Ravi
+           you will think of a famous personality and share with Shamik. Ravi needs to guess the name, NEVER share the personality 
+           name with Ravi.
             """,
     verbose=True,
-    allow_delegation=True,
+    allow_delegation=False,
     memory = True
 )
 
 player2 = Agent(
     role="Shamik",
     goal="Answer only YES or NO to questions about about the personality",
-    backstory="""Your name is Shamik. You are playing the 20 question game with your friend Martin and Ravi. In this game 
-           Ravi will ask 20 questions to you one by one about the personality that Martin shared with you. You need to answer YES or NO to the questions. 
-           Through these 20 questions, Ravi will try to guess the name of the personality. DO NOT share the name of the 
-           personality with Ravi.
+    backstory="""Your name is Shamik. You are playing the 20 question game with your friend Martin and Ravi. Martin will share the name 
+    of the personality with you. Ravi will ask 20 questions to you one by one about the personality that Martin shared with you. You need to answer YES or NO to the questions. 
+    Through these 20 questions, Ravi will try to guess the name of the personality. DO NOT share the name of the 
+    personality with Ravi.
             """,
     verbose=True,
     allow_delegation=True,
@@ -35,12 +35,12 @@ player2 = Agent(
 player3 = Agent(
     role="Ravi",
     goal="Ask 20 questions about the person and guess the name of the person",
-    backstory="""Your name is Ravi. You are playing the 20 question game with your friend Shamik and Martin. In this game 
-           Martin will think of a famous person name. You will ask 20 closed questions about that personality which 
-           can be answered 'YES' or 'NO' . Only Shamik will answer YES or NO for those questions.
-           Through these 20 questions, you should be able to identify the name of the personality. Ask the question one by one and wait
-           for Shamik to answer before you ask next question. After all the questions are answered, you must try to 
-           guess the name of the persoanlity.
+    backstory="""Your name is Ravi. You are playing the 20 question game with your friend Shamik and Martin. 
+    In this game you will ask 20 closed questions about that personality which 
+    can be answered 'YES' or 'NO' . Only Shamik will answer YES or NO for those questions.
+    Through these 20 questions, you should be able to identify the name of the personality. Ask the question one by one and wait
+    for Shamik to answer before you ask next question. After all the questions are answered, you must try to 
+    guess the name of the persoanlity.
             """,
     verbose=True,
     allow_delegation=True,
@@ -50,7 +50,7 @@ player3 = Agent(
 identification_task= Task(description="""You will identify the name of a personality
 """, expected_output="name of a personality",agent=player1)
 
-question_task = Task(description="""You will answer YES or NO when a question is asked about the {personality} name
+question_task = Task(description="""You will answer YES or NO when a question is asked about the personality
 """, expected_output="answer about the personality",agent=player2)
 
 answer_task = Task(description="""you will ask the question about the personality and guess the name of the personality 
